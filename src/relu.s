@@ -25,6 +25,7 @@ loop_start:
     blt t1, zero, loop_continue
     addi a0, a0, 4
     lw t1, 0(a0)
+	addi t0, t0, 1
     j loop_start
 #用来处理 小于0
 loop_continue:
@@ -36,7 +37,8 @@ loop_continue:
     beq t0, a1, loop_end
     j loop_start
 exit:
-    li a1, 32
+    li a0, 78
+    
 
 loop_end:
 
