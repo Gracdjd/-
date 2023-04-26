@@ -17,23 +17,22 @@ relu:
 
     li t0, 1
     blt a1, t0, exit
-
     lw t1, 0(a0)
-
+    add t2, a0, zero
 
 loop_start:
     blt t1, zero, loop_continue
-    addi a0, a0, 4
-    lw t1, 0(a0)
+    addi t2, t2, 4
+
+    lw t1, 0(t2)
 	addi t0, t0, 1
     j loop_start
 #用来处理 小于0
 loop_continue:
-    sw zero, 0(a0)
-    addi a0, a0, 4
-    
+    sw zero, 0(t2)
+    addi t2, t2, 4
     addi t0, t0, 1
-    lw t1, 0(a0)
+    lw t1, 0(t2)
     beq t0, a1, loop_end
     j loop_start
 exit:
